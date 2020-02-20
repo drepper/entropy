@@ -1,0 +1,6 @@
+[submodule "colormaps"]
+	path = colormaps
+	url = git@github.com:drepper/colormaps.git
+[submodule "spacefilling"]
+	path = spacefilling
+	url = git@github.com:drepper/spacefilling.git
