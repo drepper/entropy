@@ -27,7 +27,7 @@ and the computed entropy value is used as the result for the central byte of the
 beginning and end of the file smaller, lop-sided intervals are used.  The entropy value is displayed
 using different colors from a color map.  By default the Black Body color map below is used.
 
-![Black Body Color Map][scale.png]
+![Black Body Color Map](scale.png)
 
 In addition to the display on screen it is possible to create a Postscript output file.  To do this
 pass on the command line a second argument which is used as the name of the output file.
@@ -61,20 +61,20 @@ The first file is a text with just ASCII characters.  Letters, punctuation, and 
 specific text file require 77 different code points and likely only a subset of those in any
 256-byte window.  The resulting entropy map shows this:
 
-![Entropy Text File][text.png]
+![Entropy Text File](text.png)
 
 The entropy is quite uniform and low, as expected.
 
 A different story is a purely random file.
 
-![Entropy Random File][random.png]
+![Entropy Random File](random.png)
 
 As expected, the entropy is uniform as well and it is higher.
 
 Neither of these examples is really interesting.  We can apply the tool to other types of files.
 For instance, the following is the result of inspecting the `echo` binary.
 
-![Entropy Echo Binary][echo.png]
+![Entropy Echo Binary](echo.png)
 
 We can see the file's entropy is not homogeneous.  By analyzing the known structure of the file
 we can assign different entropy values to the different type of data and/or code in the file.
