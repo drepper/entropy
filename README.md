@@ -29,6 +29,11 @@ using different colors from a color map.  By default the Black Body color map be
 
 ![Black Body Color Map](scale.png)
 
+Given that the window size is 256 bytes and there are 256 different byte values, the maximum
+possible entropy inside a window is 8, as can be verified with simple calculations:
+
+![Max Entropy Calculation](max-entropy.svg)
+
 In addition to the display on screen it is possible to create a Postscript output file.  To do this
 pass on the command line a second argument which is used as the name of the output file.
 
