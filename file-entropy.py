@@ -4,10 +4,13 @@ import entropy
 import numpy as np
 import tkinter
 import math
+import sys
 
 
-if __name__ == '__main__':
-    import sys
+def run():
+    if len(sys.argv) < 2:
+        print("Usage: {} FILENAME [PSFILE]".format(sys.argv[0]))
+        sys.exit(1)
     fname = sys.argv[1]
 
     colormap = moreland.make_black_body()
@@ -17,10 +20,10 @@ if __name__ == '__main__':
     e = entropy.Entropy(fname = fname)
     filterwidth = 256
     it = e.compute(filterwidth)
-    res = [ int(it[i] * 256 / math.log(filterwidth, 2)) for i in it.range() ]
+    res = [ int(it[i] * len(colors) / math.log(filterwidth, 2)) for i in it.range() ]
 
-    maxwidth = 1600
-    maxheight = 1200
+    maxwidth = 2400
+    maxheight = 1800
 
     h = hilbert.HilbertCurve(len(res))
     scalex = maxwidth / h.width
@@ -35,7 +38,13 @@ if __name__ == '__main__':
         x, y = h[d]
         canvas.create_rectangle(x * scale, y * scale, (x + 1) * scale, (y + 1) * scale, fill = colors[res[d]])
 
-    canvas.update()
-    canvas.postscript(file = "test.ps", colormode = 'color')
+    if len(sys.argv) > 2:
+        psfile = sys.argv[2]
+        if not psfile.endswith('.ps'):
+            psfile += ".ps"
+        canvas.update()
+        canvas.postscript(file = psfile, colormode = 'color')
 
     tkinter.mainloop()
+
+run()
